@@ -1,0 +1,22 @@
+{
+  "name": "Slintel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Manish kumar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.2.8",
+    "body-parser": "^1.18.3"
+  },
+  "devDependencies": {
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.2",
+    "webpack": "^4.44.0"
+  }
+}
