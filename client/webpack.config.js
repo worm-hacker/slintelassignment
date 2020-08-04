@@ -1,24 +1,74 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: ['./app.js', './scss/main.scss', './css/plain_css.css'],
-  output: {
-    filename: 'dist/bundle.js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(css|sass|scss)$/,
-        use: ExtractTextPlugin.extract({
-          use: ['css-loader', 'sass-loader'],
+    entry: './src/javascript/index.js',
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
+    },
+    mode: 'development',
+    
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            },
+            {
+                test: /\.(sa|sc|c)ss$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    },
+                    {
+                        loader: "css-loader",
+                    },
+                    {
+                        loader: "postcss-loader"
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            implementation: require("sass")
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            outputPath: 'images'
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(woff|woff2|ttf|otf|eot)$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            outputPath: 'fonts'
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: "bundle.css"
         })
-      }
     ]
-  },
-  plugins: [
-    new ExtractTextPlugin({
-      filename: 'dist/[name].bundle.css',
-      allChunks: true,
-    }),
-  ],
 };

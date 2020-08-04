@@ -27,4 +27,6 @@ To run application - `npm start`
 │   └── main.scss
 ├── webpack.config.js
 ```
-To prepare build `npm ru build`
+(inside client folder then use below command)
+
+To prepare build `npm run build` 
