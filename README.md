@@ -30,3 +30,11 @@ To run application - `npm start`
 (inside client folder then use below command)
 
 To prepare build `npm run build` 
+
+## Steps to run project
+### step 1 :- clone the project 
+### step 2 :- `npm i` (in main cloned folder)
+### step 3 :- open client folder
+### step 4 :- in cmd of client folder run `npm i`
+### step 5 :- in cmd of client folder run `npm run build`
+### step 6 :- go to main folder(cloned folder) and run `npm start`
